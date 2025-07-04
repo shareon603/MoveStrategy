@@ -21,7 +21,7 @@ public class MonsterController : MonoBehaviour
         {
             transform.Translate(monspeed, 0, 0);
 
-            if (transform.position.y < -3.32)
+            if (transform.position.y < -2.78)
             {
                 Destroy(gameObject);
             }

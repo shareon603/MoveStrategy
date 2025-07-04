@@ -24,8 +24,8 @@ public class monsterGenerator : MonoBehaviour
             float px2 = Random.Range(-0.785f, 7.07f);
 
 
-            go1.transform.position = new Vector3(px1, 2.45f, 0);
-            go2.transform.position = new Vector3(px2, 2.45f, 0);
+            go1.transform.position = new Vector3(px1, 2.46f, 0);
+            go2.transform.position = new Vector3(px2, 2.46f, 0);
         }
         if (Mathf.Abs(ptime - level) < 0.01f && level <= 80) // Mathf.Abs 결과 값을 절대값으로 가져옴, 오차 범위를 사용할 때 주로 사용
         {

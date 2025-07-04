@@ -22,7 +22,7 @@ public class character : MonoBehaviour
     // ?? Lava용 추가 변수
     private Vector3 lastPosition;
     private float idleTime = 0f;
-    public float idleLimit = 1f;        
+    public float idleLimit = 0.5f;        
     public int lavaDamage = 5;        // 초당 HP 감소
     public bool isInLava = false;
 
@@ -64,7 +64,8 @@ public class character : MonoBehaviour
             if (Vector3.Distance(transform.position, lastPosition) < 0.01f)
             {
                 idleTime += Time.deltaTime;
-                if (idleTime > idleLimit)
+                Debug.Log(idleTime);
+                if (idleTime >= idleLimit)
                 {
                     HP -= lavaDamage;
                     idleTime = 0;
@@ -97,7 +98,7 @@ public class character : MonoBehaviour
                 else
                     this.ch_HP.GetComponent<TextMeshProUGUI>().text = "HP : " + HP.ToString();
             }
-            else if (monsterColor == new Color(0, 1, 0, 1))
+            else if (monsterColor == new Color(0, 1, 0, 1)) //독 몬스터
             {
                 HP -= 10;
                 if (HP <= 0)
@@ -108,7 +109,7 @@ public class character : MonoBehaviour
                     this.ch_HP.GetComponent<TextMeshProUGUI>().text = "HP : " + HP.ToString();
                 }
             }
-            else if (monsterColor == new Color(0, 0, 1, 1))
+            else if (monsterColor == new Color(0, 0, 1, 1)) //얼음 몬스터
             {
                 HP -= 10;
                 if (HP <= 0)
@@ -137,7 +138,7 @@ public class character : MonoBehaviour
 
     IEnumerator bluemonster()
     {
-        if (blue || green) yield break;
+        if (blue) yield break;
 
         blue = true;
         movespeed /= 2.0f;
