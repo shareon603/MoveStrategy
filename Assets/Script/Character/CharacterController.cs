@@ -22,7 +22,7 @@ public class character : MonoBehaviour
     // ?? Lava용 추가 변수
     private Vector3 lastPosition;
     private float idleTime = 0f;
-    public float idleLimit = 0.5f;        
+    public float idleLimit;        
     public int lavaDamage = 5;        // 초당 HP 감소
     public bool isInLava = false;
 
@@ -47,6 +47,7 @@ public class character : MonoBehaviour
         Ghost = new Color(1, 1, 1, 0.5f);
 
         // Lava 맵 여부 설정
+        idleLimit = 0.5f;
         if (SceneManager.GetActiveScene().name == "LavaBattleScene")
             isInLava = true;
 
@@ -64,7 +65,6 @@ public class character : MonoBehaviour
             if (Vector3.Distance(transform.position, lastPosition) < 0.01f)
             {
                 idleTime += Time.deltaTime;
-                Debug.Log(idleTime);
                 if (idleTime >= idleLimit)
                 {
                     HP -= lavaDamage;
