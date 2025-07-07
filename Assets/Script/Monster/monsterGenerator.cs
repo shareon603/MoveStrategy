@@ -12,8 +12,8 @@ public class monsterGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        this.delta += Time.deltaTime;
-        this.ptime += Time.deltaTime;
+        this.delta += Time.deltaTime; //몬스터 생성 주기
+        this.ptime += Time.deltaTime; // 플레이 타임
 
         if(this.delta > this.span)
         {

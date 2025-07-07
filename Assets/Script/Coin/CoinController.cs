@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour
 {
-    float level = 10.0f;
-    float monspeed = -0.001f;
+    public float level;
+    public float monspeed;
+    public float cointime;
     GameObject statePanel;
     // Start is called before the first frame update
     void Start()
     {
-       
+        level = 10.0f;
+        monspeed = -0.001f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        cointime = TimeManager.Instance.ptime;
         statePanel = GameObject.Find("Stopping");
         if (statePanel == null)
         {
@@ -25,7 +28,7 @@ public class CoinController : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            if (Time.time >= level)
+            if (cointime >= level && level <= 80)
             {
                 monspeed -= 0.0005f;
                 this.level += 10.0f;
